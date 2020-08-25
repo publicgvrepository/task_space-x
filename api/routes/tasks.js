@@ -54,7 +54,7 @@ router.post('/', async (req, res, next) => {
           });
         }
         else{
-          let url_create_issue = `${BASE_URL}/1/cards?idList=${todo_list[0].id}&name=${taskType.title}&desc=${taskType.description}&key=${key}&token=${token}`;
+          let url_create_issue = `${BASE_URL}1/cards?idList=${todo_list[0].id}&name=${taskType.title}&desc=${taskType.description}&key=${key}&token=${token}`;
           await axios.post(url_create_issue)
             .then(response =>{
               res.status(201).json({
@@ -83,7 +83,7 @@ router.post('/', async (req, res, next) => {
           });
         }
         else{
-          let url_create = `${BASE_URL}/1/cards?idList=${default_list[0].id}&name=${taskType.title}&key=${key}&token=${token}`;
+          let url_create = `${BASE_URL}1/cards?idList=${default_list[0].id}&name=${taskType.title}&key=${key}&token=${token}`;
           //If is a bug type, search that label name, otherwise search for label with name like category
           let label_name = taskType.type.toLowerCase()==="bug" ? "bug" : taskType.category.toLowerCase();
           const label = await trello_service.getLabelOnBoard(label_name);
